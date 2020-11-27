@@ -25,10 +25,15 @@ async function main() {
             {
                 $set: {
                 interests: ["$interest_1", "$interest_2"],
-                attendance: [WeekArrayAdder()],
+                attendance: [CreateAttendanceArray()],
                 },
             },
             ]);
+
+            await db
+            .collection("youths")
+            .updateMany({}, { $unset: { interest_1: "", interest_2: " " } });
+
         load.stop();
         console.info("Youth DataBase set up");
 
@@ -44,7 +49,7 @@ async function main() {
     }
 }
 
-function WeekArrayAdder(){
+function CreateAttendanceArray(){
     Date.prototype.addDays = function(days) {
         var date = new Date(this.valueOf());
         date.setDate(date.getDate() + days);
