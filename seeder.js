@@ -25,7 +25,7 @@ async function main() {
             {
                 $set: {
                 interests: ["$interest_1", "$interest_2"],
-                meetingDates: [WeekArrayAdder(), "$attended"],
+                attendance: [WeekArrayAdder()],
                 },
             },
             ]);
@@ -53,6 +53,7 @@ function WeekArrayAdder(){
 
     var date = new Date("2020-11-22");
     var weekArray = [date];
+    attendanceMap = new Map();
 
     var i = 0;
     while(i < 5000) {
@@ -61,7 +62,12 @@ function WeekArrayAdder(){
 
         i++
     }
-    return weekArray;
+
+    for( var i = 0; i < weekArray.length; i++){
+        attendanceMap.set(weekArray[i], "false");
+    }
+
+    return attendanceMap;
 }
 
 main();
