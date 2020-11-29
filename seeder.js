@@ -25,7 +25,7 @@ async function main() {
             {
                 $set: {
                 interests: ["$interest_1", "$interest_2"],
-                attendance: [CreateAttendanceArray()],
+                attendance: CreateAttendanceArray(),
                 },
             },
             ]);
@@ -57,22 +57,18 @@ function CreateAttendanceArray(){
     }
 
     var date = new Date("2020-11-22");
-    var weekArray = [date];
-    attendanceMap = new Map();
+    var attendanceArray = []; 
 
     var i = 0;
-    while(i < 5000) {
+    while(i < 100) {
         date = date.addDays(7);
-        weekArray.push(date);
+        var subWeekArray = [date.toString(), "false"];
+        attendanceArray.push(subWeekArray);
 
-        i++
+        i++;
     }
 
-    for( var i = 0; i < weekArray.length; i++){
-        attendanceMap.set(weekArray[i], "false");
-    }
-
-    return attendanceMap;
+    return attendanceArray;
 }
 
 main();
