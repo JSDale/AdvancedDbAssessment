@@ -11,13 +11,14 @@ async function main() {
     await client.connect();
     const db = client.db();
     const results = await db.collection("youths").find({}).count();
+    const quoteResults = await db.collection("quotes").find({}).count();
+    const userResults = await db.collection("users").find({}).count();
 
     //if there is no data in db, import it from JSON file
     try{
 
         if(!results)
         {
-            db.createCollection("users");
             const load = loading("importing Youth Data Base").start();
             const data = await fs.readFile(path.join(__dirname, "youthGroup.json"), "utf-8");
             await db.collection("youths").insertMany(JSON.parse(data));
@@ -36,12 +37,33 @@ async function main() {
             .updateMany({}, { $unset: { interest_1: "", interest_2: " " } });
 
             load.stop();
-            console.info("Youth DataBase set up");
+            console.info("Youth collection set up");
         
         }
         else{
             console.info("Db already exists");
         }
+
+        if(!quoteResults)
+        {
+            db.createCollection("quotes");
+            const load = loading("importing Quote Date Base").start();
+            const data = await fs.readFile(path.join(__dirname, "bibleQuotes.json"), "utf-8");
+            await db.collection("quotes").insertMany(JSON.parse(data));
+            load.stop();
+            console.info("Quote collection set up");
+        }
+
+        if(!userResults)
+        {
+            db.createCollection("users");
+            const load = loading("importing User Date Base").start();
+            const data = await fs.readFile(path.join(__dirname, "user.json"), "utf-8");
+            await db.collection("users").insertMany(JSON.parse(data));
+            load.stop();
+            console.info("User collection set up");
+        }
+
         process.exit();
     }
     catch(error){

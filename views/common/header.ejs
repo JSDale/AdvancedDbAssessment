@@ -1,25 +1,21 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"> World Wines </a>
-    <div class="navbar">
-      <div class="navbar-nav">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light cyan">
+    <a class="navbar-brand" href="/" style="padding-right: 2%; padding-left: 2%;"> VG App </a>
+    
         <a class="nav-link active" href="/">
-          Home <span class="sr-only">(current)</span>
+          Home <span class="sr-only" style="padding-right: 2%;">(current)</span>
         </a>
-        <a class="nav-link" href="tasters"> Tasters</a>
-        <a class="nav-link" href="tastings"> Tastings</a>
-        <a class="nav-link" href="search-tastings"> Search Tastings</a>
-      
+
         <% if(user) { %>
-        <a class="nav-link" href="saved-tastings"> Search Tastings</a>
-        <a class="nav-link" href="create-tasting"> Write a Review </a>
-        <a class="nav-link" href="logout"> <%= user.email %> (Logout) </a> <%
+        <a class="nav-link" style="padding-right: 2%;" href="schedule"> View Schedule</a>
+        <a class="nav-link" style="padding-right: 2%;" href="all-profiles"> View All Profiles</a>
+        <a class="nav-link" style="padding-right: 2%;" href="edit-profile"> Edit Profile </a>
+        <a class="nav-link" style="padding-right: 2%;" href="logout"> <%= user.email %> (Logout) </a> <%
         }%> <% if(!user) { %>
-        <a class="nav-link" href="login"> Login </a>
-        <a class="nav-link" href="join"> Register </a>
+        <a class="nav-link" style="padding-right: 2%;" href="login"> Login </a>
+        <a class="nav-link" style="padding-right: 2%;" href="join"> Register </a>
         <% } %>
       </div>
     </div>
   </nav>
 </header>
-;

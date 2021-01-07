@@ -11,6 +11,7 @@ const User = require("./models/User");
  * Controllers (route handlers).
  */
 const userController = require("./controllers/user");
+const quoteController = require("./controllers/quote");
 const app = express();
 app.set("view engine", "ejs");
 
@@ -59,9 +60,7 @@ const authMiddleware = async (req, res, next) => {
   next()
 }
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+app.get("/", quoteController.quote);
 
 app.post("/join", userController.create);
 app.get("/login", (req, res) => {
