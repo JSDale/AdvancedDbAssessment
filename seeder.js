@@ -17,6 +17,7 @@ async function main() {
 
         if(!results)
         {
+            db.createCollection("users");
             const load = loading("importing Youth Data Base").start();
             const data = await fs.readFile(path.join(__dirname, "youthGroup.json"), "utf-8");
             await db.collection("youths").insertMany(JSON.parse(data));
@@ -34,9 +35,9 @@ async function main() {
             .collection("youths")
             .updateMany({}, { $unset: { interest_1: "", interest_2: " " } });
 
-        load.stop();
-        console.info("Youth DataBase set up");
-
+            load.stop();
+            console.info("Youth DataBase set up");
+        
         }
         else{
             console.info("Db already exists");
