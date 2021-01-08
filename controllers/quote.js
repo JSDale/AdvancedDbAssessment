@@ -2,7 +2,8 @@
 exports.quote = async (req, res) => {
     console.info(req.session);
     const Quote = require('../models/Quote');
-    const allQuote = await Quote.find({});
+    const allQuote = await Quote.find({}).select('Quote');
+    console.info(allQuote);
     test =  "hello world";
     res.render("index", {test: test});
 }

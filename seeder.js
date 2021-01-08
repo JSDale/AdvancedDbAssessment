@@ -1,11 +1,11 @@
-const { MongoClient } = require("mongodb");
 const fs = require("fs").promises;
 const path = require("path");
 const loading = require("loading-cli");
 const { parse } = require("path");
 const e = require("express");
-const uri = "mongodb://localhost:27017/YouthGroup";
-const client = new MongoClient(uri);
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://jsdale:2dJV5SpYTraV2ST@cluster0.w8his.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
 
 async function main() {
     await client.connect();
