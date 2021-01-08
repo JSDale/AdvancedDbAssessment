@@ -1,16 +1,19 @@
-const { MongoClient } = require("mongodb");
 const fs = require("fs").promises;
 const path = require("path");
 const loading = require("loading-cli");
 const { parse } = require("path");
 const e = require("express");
-const uri = "mongodb://localhost:27017/YouthGroup";
-const client = new MongoClient(uri);
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://jsdale:2dJV5SpYTraV2ST@cluster0.w8his.mongodb.net/YouthGroup?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
 
 async function main() {
     await client.connect();
     const db = client.db();
+    db.dropDatabase();
     const results = await db.collection("youths").find({}).count();
+    const quoteResults = await db.collection("quotes").find({}).count();
+    const userResults = await db.collection("users").find({}).count();
 
     //if there is no data in db, import it from JSON file
     try{
@@ -34,13 +37,34 @@ async function main() {
             .collection("youths")
             .updateMany({}, { $unset: { interest_1: "", interest_2: " " } });
 
-        load.stop();
-        console.info("Youth DataBase set up");
-
+            load.stop();
+            console.info("Youth collection set up");
+        
         }
         else{
             console.info("Db already exists");
         }
+
+        if(!quoteResults)
+        {
+            db.createCollection("quotes");
+            const load = loading("importing Quote Date Base").start();
+            const data = await fs.readFile(path.join(__dirname, "bibleQuotes.json"), "utf-8");
+            await db.collection("quotes").insertMany(JSON.parse(data));
+            load.stop();
+            console.info("Quote collection set up");
+        }
+
+        if(!userResults)
+        {
+            db.createCollection("users");
+            const load = loading("importing User Date Base").start();
+            const data = await fs.readFile(path.join(__dirname, "user.json"), "utf-8");
+            await db.collection("users").insertMany(JSON.parse(data));
+            load.stop();
+            console.info("User collection set up");
+        }
+
         process.exit();
     }
     catch(error){
