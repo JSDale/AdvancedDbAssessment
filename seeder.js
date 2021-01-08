@@ -4,12 +4,13 @@ const loading = require("loading-cli");
 const { parse } = require("path");
 const e = require("express");
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://jsdale:2dJV5SpYTraV2ST@cluster0.w8his.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const uri = "mongodb+srv://jsdale:2dJV5SpYTraV2ST@cluster0.w8his.mongodb.net/YouthGroup?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 async function main() {
     await client.connect();
     const db = client.db();
+    db.dropDatabase();
     const results = await db.collection("youths").find({}).count();
     const quoteResults = await db.collection("quotes").find({}).count();
     const userResults = await db.collection("users").find({}).count();
