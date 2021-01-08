@@ -95,5 +95,5 @@ The database itself is stored on MongoDB Atlas, so I will have to rely on their 
 
 The application requires users to log in to utilise its functionality therefore their passwords will need to be stored in the database which is a security risk. I have mitigated that risk by using bcrypt to hash the passwords before they are stored in the database. There is also data which some might consider personal being stored on the database in plain text, like their date of birth and medical requirements, so in order to store said data a user agreement would need to be written which every user would need to agree to on user creation. As this is a proof of concept only test data will be stored in the database. The test data will be created by myself or an application such as *Informatica Test Data Management* therefore a user agreement is not required, yet.
 
-### Conclusion and Reflection
+## Conclusion and Reflection
 
