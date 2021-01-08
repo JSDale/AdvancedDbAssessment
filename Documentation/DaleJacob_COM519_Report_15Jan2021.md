@@ -77,4 +77,23 @@ Another design decision was to use a full java script stack, this decision was s
 
 ### Model - View - Controller (MVC)
 
-Using the MVC method to implement a web application is popular choice as it abstracts and loosely couples the code. This is great for reusability and reduces the amount of duplicated code, which allows for greater maintainability. 
+Using the MVC method to implement a web application is popular choice as it abstracts and loosely couples the code. This is great for reusability and reduces the amount of duplicated code, which allows for greater maintainability. This also results in the development time being reduced. It improves the code security because one modification shouldn't affect the entire model the views of web applications get changed regularly, from a font change to a complete overhaul of the UI, these changes won't affect the business logic of the application, which won't slow down the business logic either.
+
+MVC also aids search engine optimization (SEO) as it provides ease to develop SEO friendly URLs. This is because MVC can take a URL like https://www.mywebapp/join and send the user to the creation page instead of the URL needing to be https://www.mywebapp/create-user.ejs?name=bob etc...
+
+## Security and Scalability
+
+### Scalability
+
+Throughout this document scalability has been referenced and the decisions made to improve it. By choosing the MVC method this makes the application scalable in terms of development time as any additions to the application should be just that, an addition, the applications pre-existing business logic shouldn't need to be changed on mass unless the functionality changes drastically.
+
+The NoSQL approach allows for quick scalability as there aren't as many dependencies to consider when modifying the database compared to the SQL approach.
+
+### Security
+
+The database itself is stored on MongoDB Atlas, so I will have to rely on their security measures as well as implementing some within the application.
+
+The application requires users to log in to utilise its functionality therefore their passwords will need to be stored in the database which is a security risk. I have mitigated that risk by using bcrypt to hash the passwords before they are stored in the database. There is also data which some might consider personal being stored on the database in plain text, like their date of birth and medical requirements, so in order to store said data a user agreement would need to be written which every user would need to agree to on user creation. As this is a proof of concept only test data will be stored in the database. The test data will be created by myself or an application such as *Informatica Test Data Management* therefore a user agreement is not required, yet.
+
+### Conclusion and Reflection
+
