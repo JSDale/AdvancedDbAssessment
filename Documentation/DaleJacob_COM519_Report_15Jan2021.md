@@ -52,8 +52,29 @@ The key interfaces are:
 
 The key views are the web pages that will be used the most and the interfaces are the JavaScript files that interface between the webpage, the data model and the collections.
 
-## Key System Components
+### Key System Components
 
 ![](D:\jdale\Documents\Uni\AdvancedDB\AdvancedDataBaseAssessment\Documentation\Diagrams\Key_System_Components.png)
 
-the above image depicts the key components within my application. The blue arrows represent a web page linking to another web page, the purple arrows show what calls on and gets information from the controllers, the red/brown arrows show what implements the data models and the green arrows show what interacts with the database. I didn't use a framework for the creation of my diagram and I added the color scheme for easier reading as I find it hard to understand all black diagrams with a lot of arrows leading to different places.
+the above image depicts the key components within my application. The blue arrows represent a web page linking to another web page, the purple arrows show what calls on and gets information from the controllers, the red/brown arrows show what implements the data models and the green arrows show what interacts with the database. I didn't use a framework for the creation of my diagram and I added the color scheme for easier reading as I, personally, find it hard to understand all black diagrams with a lot of arrows leading to different places.
+
+## Key Design Decisions
+
+### NoSQL
+
+In the system overview I said I will be using a NoSQL approach in the implementation of the database, this is because the data I am using doesn't require high data security and the validation that a SQL approach grants can be done through the backend. I am developing this application in a agile manner, which allows me to not have all the documentation final before development can start, this means that any changes made to the database during development will need to be updated in the databases schema and entity relationship diagram (ERD). The database should also be scaled easier, although I don't expect a rush of new applicants for the youth group, some of the other leaders have ties to brownies and scouts and if they liked how the app worked they could suggest that the those groups look into using it. Those youth groups have a much wider turn around on children than we do so, the more scalable the application, the better. 
+
+There are so few collections in the database using an SQL approach doesn't make sense. The only two collections that could benefit from a relationship would be users and youths, however a compare of email addresses in the collections using java script (JS) and mongoose would determine if the user existed.
+
+### Full Stack Java Script
+
+Another design decision was to use a full java script stack, this decision was straight forward. The two main driving forces were:
+
+* It's the language I am most confident in using for this type of application.
+* Setting up a development environment is easy.
+* Java script can be run universally on most, if not all operating systems (OS).
+* It is becoming more popular among the tech giants, such as google, amazon and Netflix.
+
+### Model - View - Controller (MVC)
+
+Using the MVC method to implement a web application is popular choice as it abstracts and loosely couples the code. This is great for reusability and reduces the amount of duplicated code, which allows for greater maintainability. 
