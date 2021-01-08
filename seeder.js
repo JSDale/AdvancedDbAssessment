@@ -4,7 +4,7 @@ const loading = require("loading-cli");
 const { parse } = require("path");
 const e = require("express");
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://jsdale:2dJV5SpYTraV2ST@cluster0.w8his.mongodb.net/YouthGroup?retryWrites=true&w=majority";
+const uri = "mongodb+srv://jsdale:2dJV5SpYTraV2ST@youthgroup.w8his.mongodb.net/YothGroup?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 async function main() {
