@@ -54,7 +54,7 @@ The key views are the web pages that will be used the most and the interfaces ar
 
 ### Key System Components
 
-![](D:\jdale\Documents\Uni\AdvancedDB\AdvancedDataBaseAssessment\Documentation\Diagrams\Key_System_Components.png)
+![Key_System_Components_Diagram](/Documentation/Diagrams/Key_System_Components.png)
 
 the above image depicts the key components within my application. The blue arrows represent a web page linking to another web page, the purple arrows show what calls on and gets information from the controllers, the red/brown arrows show what implements the data models and the green arrows show what interacts with the database. I didn't use a framework for the creation of my diagram and I added the color scheme for easier reading as I, personally, find it hard to understand all black diagrams with a lot of arrows leading to different places.
 
