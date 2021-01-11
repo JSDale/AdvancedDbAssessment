@@ -5,12 +5,12 @@ const mongoose = require("mongoose");
 const chalk = require("chalk");
 const bodyParser = require("body-parser");
 const expressSession = require("express-session");
-const User = require("./models/User");
+const User = require("./models/Youth");
 
 /**
  * Controllers (route handlers).
  */
-const userController = require("./controllers/user");
+const youthController = require("./controllers/youth");
 const quoteController = require("./controllers/quote");
 const app = express();
 app.set("view engine", "ejs");
@@ -62,11 +62,11 @@ const authMiddleware = async (req, res, next) => {
 
 app.get("/", quoteController.quote);
 
-app.post("/join", userController.create);
+app.post("/join", youthController.create);
 app.get("/login", (req, res) => {
   res.render('login-user', { errors: {} })
 });
-app.post("/login", userController.login);
+app.post("/login", youthController.login);
 
 app.listen(PORT, () => {
   console.log(
