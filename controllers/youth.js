@@ -4,7 +4,7 @@ const { request } = require('express');
 
 exports.login = async (req, res) => {
     try {
-        const user = await User.findOne({ email: req.body.email });
+        const user = await User.findOne({ youth_email: req.body.email });
         if (!user) {
             res.render('login-user', { errors: { email: { message: 'email not found' } } })
             return;
