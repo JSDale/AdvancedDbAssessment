@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/Youth');
 const bcrypt = require('bcrypt');
 const { request } = require('express');
 

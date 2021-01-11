@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
-const userSchema = new Schema(
+const youthSchema = new Schema(
   {
     youth_email: { type: String, required: [true, 'email is required'], unique: true },
     password: { type: String, required: [true, 'password is required'], minlength: [7, "Name must be 8 characters long"] },
@@ -19,7 +19,7 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-userSchema.pre('save', async function (next) {
+youthSchema.pre('save', async function (next) {
     //logging
     //console.log(this.password); //this is bad practice, DO NOT DO IN PRODUCTION!!
 
@@ -32,6 +32,7 @@ userSchema.pre('save', async function (next) {
     catch(e) {
         throw Error('could not hash password');
     }
+
     try{
         Date.prototype.addDays = function(days) {
             var date = new Date(this.valueOf());
@@ -58,4 +59,4 @@ userSchema.pre('save', async function (next) {
     }
 })
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Youth", youthSchema);
