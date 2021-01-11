@@ -63,6 +63,14 @@ const authMiddleware = async (req, res, next) => {
 
 app.get("/", quoteController.quote);
 
+app.get("/logout", async (req, res) => {
+  req.session.destroy();
+  global.user = false;
+  res.redirect('/');
+})
+
+app.get("/edit-profile", youthController.ViewProfile);
+
 app.post("/join", youthController.create);
 app.get("/login", (req, res) => {
   res.render('login-user', { errors: {} })

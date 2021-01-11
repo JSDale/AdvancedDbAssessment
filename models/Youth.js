@@ -14,7 +14,7 @@ try{
         youth_Allergies: {type: String, required: false, unique: false},
         youth_DoB: {type: String, required: false, unique: false},
         youth_OtherNotes: {type: String, required: false, unique: false},
-        interest: {type: Array, required: [true, 'Please add an interest'], unique: false},
+        interests: {type: Array, required: [true, 'Please add an interest'], unique: false},
         attendance: {type: Array, required: true, unique: false},
     }
     );

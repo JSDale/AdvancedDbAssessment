@@ -13,7 +13,7 @@ async function main() {
     db.dropDatabase();
     const results = await db.collection("youths").find({}).count();
     const quoteResults = await db.collection("quotes").find({}).count();
-    const userResults = await db.collection("users").find({}).count();
+    //const userResults = await db.collection("users").find({}).count();
 
     //if there is no data in db, import it from JSON file
     try{
@@ -55,15 +55,15 @@ async function main() {
             console.info("Quote collection set up");
         }
 
-        if(!userResults)
-        {
-            db.createCollection("users");
-            const load = loading("importing User Date Base").start();
-            const data = await fs.readFile(path.join(__dirname, "user.json"), "utf-8");
-            await db.collection("users").insertMany(JSON.parse(data));
-            load.stop();
-            console.info("User collection set up");
-        }
+        // if(!userResults)
+        // {
+        //     db.createCollection("users");
+        //     const load = loading("importing User Date Base").start();
+        //     const data = await fs.readFile(path.join(__dirname, "user.json"), "utf-8");
+        //     await db.collection("users").insertMany(JSON.parse(data));
+        //     load.stop();
+        //     console.info("User collection set up");
+        // }
         
         process.exit();
     }

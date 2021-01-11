@@ -68,8 +68,8 @@ exports.create = async (req, res) => {
             youth_MedicinalRequirements: youth_MedicinalRequirements,
             youth_Allergies: youth_Allergies,
             youth_DoB: youth_DoB,
-            youthOtherNotes: youth_OtherNotes,
-            interest: interests
+            youth_OtherNotes: youth_OtherNotes,
+            interests: interests
         });
         console.log("saving");
         await save(youth);
@@ -90,4 +90,23 @@ async function save(youth)
 {
     //Youth.save(youth);
     await youth.save();
+}
+
+exports.ViewProfile = async (req, res) => {
+    const Youth = require('../models/Youth');
+    var youthArr = await Youth.where('youth_email').equals('bob@gmail.com');
+    console.info(youthArr);
+    interests = youthArr[0];
+    for(var i in interests)
+    {
+        var isFirst = true;
+        var interestsStr = "";
+        if(isFirst){
+            interestsStr = i.toString() + ", ";
+        }
+        else{
+            interestsStr = interestsStr + i.toString() + ", ";
+        }
+    }
+    res.render("edit_profile", {interests: interestsStr});
 }
