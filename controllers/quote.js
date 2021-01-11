@@ -6,6 +6,6 @@ exports.quote = async (req, res) => {
     var randomElement = allQuote[Math.floor(Math.random() * allQuote.length)];
     randomElement = randomElement.toString().replace("{", "");
     randomElement = randomElement.toString().replace("}", "");
-    test =  randomElement;
-    res.render("index", {test: test});
+    quote =  randomElement;
+    res.render("index", {quote: quote});
 }
