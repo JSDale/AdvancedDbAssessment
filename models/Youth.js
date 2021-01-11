@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
-console.log("creating schema");
 try{
     const youthSchema = new Schema(
     {
@@ -16,24 +15,22 @@ try{
         youth_DoB: {type: String, required: false, unique: false},
         youth_OtherNotes: {type: String, required: false, unique: false},
         interest: {type: Array, required: [true, 'Please add an interest'], unique: false},
-        attendance: {type: Array, required: true, unique: false}
+        attendance: {type: Array, required: true, unique: false},
     }
     );
 
     youthSchema.pre('save', async function (next) {
+        try{
+            try{
+                const hash = await bcrypt.hash(this.password, 10);
+                this.password = hash;
+                console.log(this.password);
+                next();
+            }
+            catch(e) {
+                throw Error('could not hash password');
+            }
 
-        try{
-            console.log("creating hashed password array");
-            const hash = await bcrypt.hash(this.password, 10);
-            this.password = hash;
-            console.log(this.password);
-            next();
-        }
-        catch(e) {
-            throw Error('could not hash password');
-        }
-        
-        try{
             console.log("creating attendance array");
             Date.prototype.addDays = function(days) {
                 var date = new Date(this.valueOf());

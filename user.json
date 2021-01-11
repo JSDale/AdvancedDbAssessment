@@ -1,3 +1,5 @@
 [
-    {"email": "admin@admin.com", "password": "$2b$10$.E/y2pusURtsWyABXfBaEu3a6rEPCO8rxB2eAumEWPCWtkU/wHtS."}
+    {"email": "admin@admin.com", "password": "$2b$10$.E/y2pusURtsWyABXfBaEu3a6rEPCO8rxB2eAumEWPCWtkU/wHtS."},
+    {"email": "bob@gmail.com", "password": "$2b$10$OGI2DMdrwTN6nyv09Q9gs.9cBe.R3IwcnFpgn.6OFIJiTwfc/g3f6"},
+    {"email": "bella@gmail.com", "password": "$2b$10$Z8F8HZ.W7OENNxAfAAvAc.QWQbg1R6Us.RWVk2.1vPgLnzKEbYydK"}
 ]

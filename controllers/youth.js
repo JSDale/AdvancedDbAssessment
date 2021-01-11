@@ -4,13 +4,13 @@ const { request } = require('express');
 
 exports.login = async (req, res) => {
     try {
-        const youth = await Youth.findOne({ youth_email: req.body.email });
-        if (!youth) {
+        const user = await Youth.findOne({ youth_email: req.body.email });
+        if (!user) {
             res.render('login-user', { errors: { email: { message: 'email not found' } } })
             return;
         }
 
-        const match = await bcrypt.compare(req.body.password, youth.password);
+        const match = await bcrypt.compare(req.body.password, user.password);
         
         if (match) {
             req.session.userID = user._id;
@@ -24,8 +24,9 @@ exports.login = async (req, res) => {
 
 
     } catch (e) {
+        console.log(e);
         return res.status(400).send({
-            message: JSON.parse(e),
+            message: "Error loggin in",
         });
     }
 }
@@ -39,41 +40,41 @@ exports.create = async (req, res) => {
         var youth_Allergies = "N/A";
         var youth_DoB = "N/A";
         var youth_OtherNotes = "N/A";
-        var interests = new Array (req.body.interests);
+        var interests = new Array (req.body.interest);
 
-        if (req.body.youthGender =="") {
+        if (req.body.youthGender ) {
             youth_Gender = req.body.youthGender;
         }
-        if (req.body.youth_MedicinalRequirements == "") {
+        if (req.body.youth_MedicinalRequirements ) {
             youth_MedicinalRequirements = req.body.youth_MedicinalRequirements;
         }
-        if (req.body.youth_Allergies == "") {
+        if (req.body.youth_Allergies ) {
             youth_Allergies = req.body.youth_Allergies;
         }
-        if (req.body.youth_DoB == "") {
+        if (req.body.youth_DoB ) {
             youth_DoB = req.body.youth_DoB;
         }
-        if (req.body.youthOtherNotes == "") {
-            youth_OtherNotes = req.body.youthOtherNotes;
+        if (req.body.youthOtherNotes ) {
+            youth_OtherNotes = req.body.youth_OtherNotes;
         }
 
         console.log("hit defaults");
         const youth = new Youth({
-            youth_email: req.body.email, 
-            password: req.body.password, 
+            youth_email: req.body.email,
+            password: req.body.password,
             parentsEmail: req.body.parentsEmail,
-            youth_FullName: req.body.youthFullName,
+            youth_FullName: req.body.youth_FullName,
             youth_Gender: youth_Gender,
             youth_MedicinalRequirements: youth_MedicinalRequirements,
             youth_Allergies: youth_Allergies,
             youth_DoB: youth_DoB,
             youthOtherNotes: youth_OtherNotes,
-            interests: interests
+            interest: interests
         });
         console.log("saving");
-        await youth.save();
+        await save(youth);
         console.log("saved");
-        res.redirect('/?message=account created');
+        res.redirect('/login?message=account created');
     }
     catch(e){
         if(e.errors){
@@ -83,4 +84,10 @@ exports.create = async (req, res) => {
         console.log(e);
         return res.status(400).send({ message: "couldn't save user" });
     }
+}
+
+async function save(youth)
+{
+    //Youth.save(youth);
+    await youth.save();
 }
