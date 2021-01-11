@@ -8,7 +8,7 @@
     {
         "youth_FullName": "Bella Stella", "youth_Gender": "Female", "youth_email": "bella@gmail.com", "password": "$2b$10$S1HEPRTcn7uvRC5VoS7hdezGd1ZLjJ7EhkwzthFtI006iuwyhgEte",
         "parentsEmail": "parent2@gmail.com", 
-        "youth_Medicinal Requirements": "None", "youth_Allergies": "Peanut Allergy", "youth_DoB": "2009-08-11", "youth_OtherNotes": "None",
+        "youth_MedicinalRequirements": "None", "youth_Allergies": "Peanut Allergy", "youth_DoB": "2009-08-11", "youth_OtherNotes": "None",
         "interest_1": "rock climbing", "interest_2": "swimming"
     }
 ]
