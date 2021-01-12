@@ -74,9 +74,9 @@ app.get("/view_profile/delete/:id", youthController.DeleteProfile);
 app.get("/view_profile/edit/:id", youthController.EditProfile);
 app.post("/view_profile/edit/:id", youthController.Update);
 
-// app.get("/test", async (req, res) => {
-//   res.render('update-user');
-// })
+app.get("/test", async (req, res) => {
+  res.render('test');
+})
 
 app.post("/join", youthController.create);
 app.get("/login", (req, res) => {

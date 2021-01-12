@@ -1,17 +1,44 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light cyan">
-    <a class="navbar-brand" href="/" style="padding-right: 2%; padding-left: 2%;"> VG App </a>
-
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <a class="brand-logo" href="/" style="padding-right: 2%; padding-left: 2%;"> VG App </a>
+      <ul class="right hide-on-med-and-down" style="padding-right: 5%;">
         <% if(user) { %>
-        <a class="nav-link" style="padding-right: 2%;" href="schedule"> View Schedule</a>
-        <a class="nav-link" style="padding-right: 2%;" href="all-profiles"> View All Profiles</a>
-        <a class="nav-link" style="padding-right: 2%;" href="view-profile"> View Profile </a>
-        <a class="nav-link" style="padding-right: 2%;" href="logout"> <%= user.youth_email %> (Logout) </a> <%
-        }%> <% if(!user) { %>
-        <a class="nav-link" style="padding-right: 2%;" href="login"> Login </a>
-        <a class="nav-link" style="padding-right: 2%;" href="join"> Register </a>
+        <li><a class="nav-link" href="schedule"> View Schedule</a></li>
+        <li><a class="nav-link" href="all-profiles"> View All Profiles</a></li>
+        <li><a class="nav-link" href="view-profile"> View Profile </a></li>
+        <li><a class="nav-link" href="logout"> <%= user.youth_email %> (Logout) </a></li>
+
+        <% } %> <% if(!user) { %>
+          <li><a class="nav-link"  href="login"> Login </a></li>
+          <li><a class="nav-link"  href="join"> Register </a></li>
         <% } %>
+      </ul>
       </div>
     </div>
   </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <% if(user) { %>
+      <li><a href="schedule"> View Schedule</a></li>
+      <li><a href="all-profiles"> View All Profiles</a></li>
+      <li><a href="view-profile"> View Profile</a></li>
+      <li><a href="logout"> <%= user.youth_email %> (Logout) </a></li>
+    <% } %> <% if(!user) { %>
+      <li><a href="login"> Login</a></li>
+      <li><a href="join"> Register</a></li>
+    <% } %>
+  </ul>
+
+  <!-- script to implement hamburger menu when mobile-->
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="../materialize/js/materialize.js"></script>
+        
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.sidenav');
+          var instances = M.Sidenav.init(elems, {});
+      });
+  </script>
+
 </header>
