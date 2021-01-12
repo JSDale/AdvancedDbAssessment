@@ -134,3 +134,13 @@ exports.Update = async (req, res) => {
         });
     }
 };
+
+exports.AllProfiles = async (req, res) => {
+    try{
+        const youths = await Youth.find({});
+        res.render("all-profiles", {youths: youths})
+    } catch(ex) {
+        res.status(404).send({ message: "could not list the kids" });
+    }
+    
+};

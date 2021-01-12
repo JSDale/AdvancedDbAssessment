@@ -69,10 +69,7 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/view-profile", youthController.ViewProfile);
-app.get("/view_profile/delete/:id", youthController.DeleteProfile);
-app.get("/view_profile/edit/:id", youthController.EditProfile);
-app.post("/view_profile/edit/:id", youthController.Update);
+
 
 app.get("/test", async (req, res) => {
   res.render('test');
@@ -83,6 +80,13 @@ app.get("/login", (req, res) => {
   res.render('login-user', { errors: {} })
 });
 app.post("/login", youthController.login);
+
+app.get("/view-profile", youthController.ViewProfile);
+app.get("/view_profile/delete/:id", youthController.DeleteProfile);
+app.get("/view_profile/edit/:id", youthController.EditProfile);
+app.post("/view_profile/edit/:id", youthController.Update);
+
+app.get("/all-profiles", youthController.AllProfiles);
 
 app.listen(PORT, () => {
   console.log(
