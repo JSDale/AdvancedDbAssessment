@@ -70,6 +70,7 @@ app.get("/logout", async (req, res) => {
 })
 
 app.get("/view-profile", youthController.ViewProfile);
+app.get("/view_profile/delete/:id", youthController.DeleteProfile);
 
 app.post("/join", youthController.create);
 app.get("/login", (req, res) => {

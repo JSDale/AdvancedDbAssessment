@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
             message: "Error loggin in",
         });
     }
-}
+};
 
 exports.create = async (req, res) => {
     try{
@@ -87,7 +87,7 @@ exports.create = async (req, res) => {
         console.log(e);
         return res.status(400).send({ message: "couldn't save user" });
     }
-}
+};
 
 async function save(youth)
 {
@@ -96,23 +96,17 @@ async function save(youth)
 }
 
 exports.ViewProfile = async (req, res) => {
-    const Youth = require('../models/Youth');
-    const id = req.body.id;
-    console.info(id);
-    var youthArr = await Youth.findById(id);
-    console.info(youthArr);
-    var interestsStr = "test";
-    // interests = youthArr[0];
-    // for(var i in interests)
-    // {
-    //     var isFirst = true;
-    //     var interestsStr = "";
-    //     if(isFirst){
-    //         interestsStr = i.toString() + ", ";
-    //     }
-    //     else{
-    //         interestsStr = interestsStr + i.toString() + ", ";
-    //     }
-    // }
-    res.render("view_profile", {interests: interestsStr});
+    res.render("view_profile");
 }
+
+exports.DeleteProfile = async (req, res) => {
+    const id = req.params.id;
+    try {
+        await Youth.findByIdAndRemove(id);
+        res.redirect("/?profile-deleted");
+      } catch (e) {
+        res.status(404).send({
+          message: `could not delete  record ${id}.`,
+        });
+      }
+};

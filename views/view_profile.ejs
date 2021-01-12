@@ -20,7 +20,8 @@
             <h3 style="text-align: center;">
                 <%= user.youth_FullName %>
             </h3>
-            <p style="text-align: center;" name="id">ID: <%= user._id %></p>
+            <p style="text-align: center;" name="id">ID: <%= user._id %>
+            </p>
             <h5 style="padding-left:2%;" name="youth_email">Email: <%= user.youth_email %>
             </h5>
             <h5 style="padding-left:2%;">Parent's Email: <%= user.parentsEmail %>
@@ -40,6 +41,18 @@
             <h5 style="padding-left:2%;">Other Notes: <%= user.youth_OtherNotes %>
             </h5>
         </div>
+        <div id="buttons" style="padding-left: 2%;">
+            <tr>
+                <td>
+                    <a role="button" class="waves-effect waves-light btn" href="/edit/<%=user.id%>"> Edit Profile </a>
+                </td>
+                <td>
+                    <a role="button" class="waves-effect waves-light btn" style="color: red;"
+                        href="/view_profile/delete/<%= user.id %>">Delete Profile</a>
+                </td>
+            </tr>
+        </div>
+
 
         <!--JavaScript at end of body for optimized loading-->
         <script type="text/javascript" src="../materialize/js/materialize.js"></script>
