@@ -28,7 +28,7 @@ I would also like to implement a forum for the kids to use to talk to each other
 
 ### Functionality
 
-The system will be comprised of two main functions, a service that keeps track of attendance and a service that allows users to view all profiles, create and edit their own. I intend to implement other functionality, however I am aware of the time constraints so they might have to missed out of this version and looked at in a future sprint.
+The system will be comprised of two main functions, a service that keeps track of attendance and a service that allows users to view all profiles, create and edit their own.
 
 ### Datastores
 
@@ -45,12 +45,11 @@ The key views are:
 * The view all profile page.
 * The attendance tracker page.
 
-The key interfaces are:
+The key interface(s) are:
 
-* user.js
 * youth.js
 
-The key views are the web pages that will be used the most and the interfaces are the JavaScript files that interface between the webpage, the data model and the collections.
+The key views are the web pages that will be used the most and the interfaces are the JavaScript files that interface between the webpage, the data model and the database.
 
 ### Key System Components
 
@@ -64,7 +63,7 @@ the above image depicts the key components within my application. The blue arrow
 
 In the system overview I said I will be using a NoSQL approach in the implementation of the database, this is because the data I am using doesn't require high data security and the validation that a SQL approach grants can be done through the backend. I am developing this application in a agile manner, which allows me to not have all the documentation final before development can start, this means that any changes made to the database during development will need to be updated in the databases schema and entity relationship diagram (ERD). The database should also be scaled easier, although I don't expect a rush of new applicants for the youth group, some of the other leaders have ties to brownies and scouts and if they liked how the app worked they could suggest that the those groups look into using it. Those youth groups have a much wider turn around on children than we do so, the more scalable the application, the better. 
 
-There are so few collections in the database using an SQL approach doesn't make sense. The only two collections that could benefit from a relationship would be users and youths, however a compare of email addresses in the collections using java script (JS) and mongoose would determine if the user existed.
+There are two collections within my database and they don't relate in any way. I could remove certain fields from the "youths" collection and put them in their own collection. For example, I could extract the "interests" fields, that way they won't have to be repeated. However, they are only strings and there are no size constraints that would require me to not repeat data.
 
 ### Full Stack Java Script
 

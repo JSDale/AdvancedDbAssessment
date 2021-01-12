@@ -16,11 +16,13 @@
 <body>
     <%- include('common/header'); -%>
 
-        <div class="card large">
+        <div class="card large" style="height: 100%;">
             <h3 style="text-align: center;">
                 <%= user.youth_FullName %>
             </h3>
             <p style="text-align: center;" name="id">ID: <%= user._id %>
+            </p>
+            <p style="text-align: center;" name="message">If you have updated your profile you will need to log out for it to take effect.
             </p>
             <h5 style="padding-left:2%;" name="youth_email">Email: <%= user.youth_email %>
             </h5>
@@ -41,10 +43,10 @@
             <h5 style="padding-left:2%;">Other Notes: <%= user.youth_OtherNotes %>
             </h5>
         </div>
-        <div id="buttons" style="padding-left: 2%;">
+        <div id="buttons" style="padding-left: 2%; padding-top: 1%;">
             <tr>
                 <td>
-                    <a role="button" class="waves-effect waves-light btn" href="/edit/<%=user.id%>"> Edit Profile </a>
+                    <a role="button" class="waves-effect waves-light btn" href="/view_profile/edit/<%=user.id%>"> Edit Profile </a>
                 </td>
                 <td>
                     <a role="button" class="waves-effect waves-light btn" style="color: red;"

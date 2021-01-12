@@ -103,10 +103,34 @@ exports.DeleteProfile = async (req, res) => {
     const id = req.params.id;
     try {
         await Youth.findByIdAndRemove(id);
-        res.redirect("/?profile-deleted");
+        res.redirect("/logout");
       } catch (e) {
         res.status(404).send({
           message: `could not delete  record ${id}.`,
         });
       }
+};
+
+exports.EditProfile = async (req, res) => {
+    const id = req.params.id;
+    try{
+        const user = await Youth.findById(id);
+        res.render('update-user', {user: user, id: id});
+    }catch (e){
+        res.status(404).send({
+            message: `could not find user: ${id}`,
+        });
+    }
+};
+
+exports.Update = async (req, res) => {
+    const id = req.params.id;
+    try{
+        const user = await Youth.updateOne({_id: id}, req.body);
+        res.redirect('/view-profile?profile updated');
+    } catch(ex){
+        res.status(404).send({
+            message: `could not update ${id}.`,
+        });
+    }
 };
