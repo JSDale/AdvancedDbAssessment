@@ -89,6 +89,16 @@ exports.create = async (req, res) => {
     }
 };
 
+// function CheckGender(genderInput) {
+//     let genderInput = genderInput.toUpper();
+//     if(genderInput.eqauals("MALE")){ return;}
+//     else if(genderInput.equals("FEMALE")){return;}
+//     else if(genderInput.equals("OTHER")){return;}
+//     else{
+//         throw new Error("Gender not applicable");
+//     }
+// }
+
 async function save(youth)
 {
     //Youth.save(youth);

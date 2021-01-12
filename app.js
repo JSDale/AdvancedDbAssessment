@@ -86,7 +86,7 @@ app.get("/view_profile/delete/:id", youthController.DeleteProfile);
 app.get("/view_profile/edit/:id", youthController.EditProfile);
 app.post("/view_profile/edit/:id", youthController.Update);
 
-app.get("/all-profiles", youthController.AllProfiles);
+app.get("/all-profiles", authMiddleware, youthController.AllProfiles);
 
 app.listen(PORT, () => {
   console.log(

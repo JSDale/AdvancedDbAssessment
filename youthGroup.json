@@ -1,13 +1,13 @@
 [
     {
         "youth_FullName": "Bob Bobbery", "youth_Gender": "Male", "youth_email": "bob@gmail.com", "password": "$2b$10$ZBznncHvmRaAqDrGORE9rOapJnewT582ZQOymTAMfrpTT.ggsbIK2",
-        "parentsEmail": "parent@gmail.com", "youth_MedicinalRequirements": "Asthma Inhailer", "youth_Allergies": "None", "youth_DoB": "2009-05-01",
+        "parentsEmail": "parent@gmail.com", "youth_MedicinalRequirements": "Asthma Inhailer", "youth_Allergies": "None", "youth_DoB": "01-05-2009",
         "youth_OtherNotes": "None", "interestOne": "gaming", "interestTwo": "rowing"
     },
     {
         "youth_FullName": "Bella Stella", "youth_Gender": "Female", "youth_email": "bella@gmail.com", "password": "$2b$10$q66ygUwmo8pm0qQEZn366OEH.FAvcG3LBoWuInU1UIfi1irZNuaZ6",
         "parentsEmail": "parent2@gmail.com", 
-        "youth_MedicinalRequirements": "None", "youth_Allergies": "Peanut Allergy", "youth_DoB": "2009-08-11", "youth_OtherNotes": "None",
+        "youth_MedicinalRequirements": "None", "youth_Allergies": "Peanut Allergy", "youth_DoB": "11-08-2009", "youth_OtherNotes": "None",
         "interestOne": "rock climbing", "interestTwo": "swimming"
     }
 ]
