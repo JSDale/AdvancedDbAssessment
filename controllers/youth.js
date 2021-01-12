@@ -40,7 +40,7 @@ exports.create = async (req, res) => {
         var youth_Allergies = "N/A";
         var youth_DoB = "N/A";
         var youth_OtherNotes = "N/A";
-        var interests = new Array (req.body.interest);
+        var interestTwo = "N/A";
 
         if (req.body.youthGender ) {
             youth_Gender = req.body.youthGender;
@@ -57,8 +57,10 @@ exports.create = async (req, res) => {
         if (req.body.youthOtherNotes ) {
             youth_OtherNotes = req.body.youth_OtherNotes;
         }
+        if(req.body.interestTwo){
+            interestTwo = req.body.interestTwo;
+        }
 
-        console.log("hit defaults");
         const youth = new Youth({
             youth_email: req.body.email,
             password: req.body.password,
@@ -69,7 +71,8 @@ exports.create = async (req, res) => {
             youth_Allergies: youth_Allergies,
             youth_DoB: youth_DoB,
             youth_OtherNotes: youth_OtherNotes,
-            interests: interests
+            interestOne: req.body.interestOne,
+            interestTwo: interestTwo
         });
         console.log("saving");
         await save(youth);
@@ -94,19 +97,22 @@ async function save(youth)
 
 exports.ViewProfile = async (req, res) => {
     const Youth = require('../models/Youth');
-    var youthArr = await Youth.where('youth_email').equals('bob@gmail.com');
+    const id = req.body.id;
+    console.info(id);
+    var youthArr = await Youth.findById(id);
     console.info(youthArr);
-    interests = youthArr[0];
-    for(var i in interests)
-    {
-        var isFirst = true;
-        var interestsStr = "";
-        if(isFirst){
-            interestsStr = i.toString() + ", ";
-        }
-        else{
-            interestsStr = interestsStr + i.toString() + ", ";
-        }
-    }
-    res.render("edit_profile", {interests: interestsStr});
+    var interestsStr = "test";
+    // interests = youthArr[0];
+    // for(var i in interests)
+    // {
+    //     var isFirst = true;
+    //     var interestsStr = "";
+    //     if(isFirst){
+    //         interestsStr = i.toString() + ", ";
+    //     }
+    //     else{
+    //         interestsStr = interestsStr + i.toString() + ", ";
+    //     }
+    // }
+    res.render("view_profile", {interests: interestsStr});
 }

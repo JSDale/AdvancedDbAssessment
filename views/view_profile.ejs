@@ -20,6 +20,7 @@
             <h3 style="text-align: center;">
                 <%= user.youth_FullName %>
             </h3>
+            <p style="text-align: center;" name="id">ID: <%= user._id %></p>
             <h5 style="padding-left:2%;" name="youth_email">Email: <%= user.youth_email %>
             </h5>
             <h5 style="padding-left:2%;">Parent's Email: <%= user.parentsEmail %>
@@ -28,13 +29,15 @@
             </h5>
             <h5 style="padding-left:2%;">Date of Birth: <%= user.youth_DoB %>
             </h5>
+            <h5 style="padding-left:2%;">Interest 1: <%= user.interestOne %>
+            </h5>
+            <h5 style="padding-left:2%;">Interest 2: <%= user.interestTwo %>
+            </h5>
             <h5 style="padding-left:2%;">Allergies: <%= user.youth_Allergies %>
             </h5>
             <h5 style="padding-left:2%;">Medicinal Requirements: <%= user.youth_MedicinalRequirements %>
             </h5>
             <h5 style="padding-left:2%;">Other Notes: <%= user.youth_OtherNotes %>
-            </h5>
-            <h5 style="padding-left:2%;">Interests: <%= interests %>
             </h5>
         </div>
 

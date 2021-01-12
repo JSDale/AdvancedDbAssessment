@@ -80,18 +80,28 @@
                 <p style="color: red"><%= errors['youthFullName'].message %></p>
                 <% } %>
               </div>
-
+              
               <div class="form-group">
-                <label for="interest" style="color: red;">Interest*</label>
+                <label for="interest" style="color: red;">Interest 1*</label>
                 <input
                   placeholder="Enter an interest*"
                   type="text"
                   class="form-control"
-                  name="interest"
+                  name="interestOne"
                 />
                 <% if (errors['interest']) { %>
                 <p style="color: red"><%= errors['interest'].message %></p>
                 <% } %>
+              </div>
+              
+              <div class="form-group">
+                <label for="interest">Interest 2</label>
+                <input
+                  placeholder="Enter an interest*"
+                  type="text"
+                  class="form-control"
+                  name="interestTwo"
+                />
               </div>
 
               <div class="form-group">

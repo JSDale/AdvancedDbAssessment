@@ -69,7 +69,7 @@ app.get("/logout", async (req, res) => {
   res.redirect('/');
 })
 
-app.get("/edit-profile", youthController.ViewProfile);
+app.get("/view-profile", youthController.ViewProfile);
 
 app.post("/join", youthController.create);
 app.get("/login", (req, res) => {

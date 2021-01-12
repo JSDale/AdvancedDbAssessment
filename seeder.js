@@ -27,7 +27,7 @@ async function main() {
             await db.collection("youths").updateMany({}, [
             {
                 $set: {
-                interests: ["$interest_1", "$interest_2"],
+                //interests: ["$interest_1", "$interest_2"],
                 attendance: CreateAttendanceArray(),
                 },
             },
@@ -35,7 +35,7 @@ async function main() {
 
             await db
             .collection("youths")
-            .updateMany({}, { $unset: { interest_1: "", interest_2: " " } });
+            //.updateMany({}, { $unset: { interest_1: "", interest_2: " " } });
 
             load.stop();
             console.info("Youth collection set up");
