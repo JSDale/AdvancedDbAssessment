@@ -14,6 +14,7 @@ const User = require("./models/Youth");
 const youthController = require("./controllers/youth");
 const quoteController = require("./controllers/quote");
 const youthApiController = require("./controllers/api/youth");
+const attendanceController = require("./controllers/attendance");
 const app = express();
 app.set("view engine", "ejs");
 
@@ -90,6 +91,8 @@ app.post("/view_profile/edit/:id", youthController.Update);
 app.get("/all-profiles", authMiddleware, youthController.AllProfiles);
 
 app.get("/api/search-youth", youthApiController.list);
+
+app.get("/schedule", authMiddleware, attendanceController.AttendanceList);
 
 app.listen(PORT, () => {
   console.log(

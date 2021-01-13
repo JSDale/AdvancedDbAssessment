@@ -142,5 +142,4 @@ exports.AllProfiles = async (req, res) => {
     } catch(ex) {
         res.status(404).send({ message: "could not list the kids" });
     }
-    
 };

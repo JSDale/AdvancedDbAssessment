@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="description" content="" />
+        <title>Attendance Tracker</title>
+
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../materialize/css/materialize.css"  media="screen,projection"/>
+        
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link href="css/album.css" rel="stylesheet" />
+    </head>
+    <body>
+        <%- include('common/header'); -%>
+
+        <div class ="container">
+            <h1>Attendance Tracker</h1>
+
+            <table>
+                <tr>
+                    <th>Week</th>
+                    <% youths.forEach(youth => { %>
+                        <th><%= youth.youth_FullName %></th>
+                    <% }); %>
+                </tr>
+                <%  let youth = youths[0];
+                    let i = 0;
+                    youth.attendance.forEach(week => { 
+                        if(week.toString().includes("00:00:00 GMT+0000 (Greenwich Mean Time)")) {
+                            week = week.toString().replace(" 00:00:00 GMT+0000 (Greenwich Mean Time)", "" ); 
+                        }
+                        if(week.toString().includes("00:00:00 GMT+0100 (British Summer Time)")) {
+                            week = week.toString().replace(" 00:00:00 GMT+0100 (British Summer Time)", "" ); 
+                        }
+                        if(week.toString().includes("false")) { week = week.toString().replace(",false", "" ); } 
+                        else if(week.toString().includes("true")) { week = week.toString().replace(",true", "" ); }
+                    %>
+                        <tr>
+                            <td><%= week %></td>
+                            <% youths.forEach( youth => { 
+                               let attended = youth.attendance[i];
+                               if(attended.toString().includes("true")) {attended = true;}
+                               else if(attended.toString().includes("false")) {attended = false;}     
+                            %>
+                                <td> <%= attended %> </td>
+                            <% }); %> 
+                        </tr>
+                    <% i++ }); %> 
+            </table>
+        </div>
+    </body>
+</html>
