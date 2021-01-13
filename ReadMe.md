@@ -15,10 +15,8 @@
 
 * Open the folder containing the project in vs code.
 * Run npm install
-* Edit the MongoDB_URI within the .env file to your local database,  for example MONGODB_URI=mongodb://localhost:27017/YouthGroup
-* Do the same as the previous step, but in the seeder.js file.
-* Type in the terminal node seeder.js
-* You can check MongoDB to ensure the seeder file worked. If it did run npm run dev
+* Enter in the terminal node seeder.js
+* Enter run npm run dev in the terminal
 
 #### Running the app locally
 
@@ -33,4 +31,20 @@
 
 * Visual Studio Code (vs code)
 * Node JS installed
+* NPM installed
+* Heroku CLI installed
+* Git CLI installed
 
+#### How to set up the environment
+
+* Open the folder containing the project in vs code.
+* Run npm install
+* Type in the terminal node seeder.js
+* Go to https://nameless-savannah-04348.herokuapp.com/ you should see the home page load up.
+* If you make cahnges and want that to apply in the Heroku server you must run these command:
+* * heroku login
+* * heroku create *Note, this will change the URL as it will host in your account.*
+* * git add --a
+* * git commit -m"<message>"
+* * git push origin main *or master*
+* * git push heroku main *or master*
