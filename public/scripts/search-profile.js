@@ -2,12 +2,16 @@ const youthView = (youth) => `
 
 <div class="col-12">
     <div class="card">
-        <h5 class="card-header"> ${youth.youth_FullName} <strong>(search match: ${youth.interestOne})</strong></h5>
+        <h5 class="card-header"> ${youth.youth_FullName}</h5>
         <div class="card-body">
          <p class="card-text">${youth.youth_email}</p>
           <ul class="list-group">
                 <li class="list-group-item">Interest One: ${youth.interestOne}</li>
                 <li class="list-group-item">Interest Two: ${youth.interestTwo}</li>
+                <li class="list-group-item">DoB: ${youth.youth_DoB}</li>
+                <li class="list-group-item">Gender: ${youth.youth_Gender}</li>
+                <li class="list-group-item">Allergies: ${youth.youth_Allergies}</li>
+                <li class="list-group-item">Medicinal Requirements: ${youth.youth_MedicinalRequirements}</li>
           </ul>
  </div>
 `;
