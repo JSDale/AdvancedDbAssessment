@@ -13,6 +13,7 @@ const User = require("./models/Youth");
 //const userController = require("./controllers/user");
 const youthController = require("./controllers/youth");
 const quoteController = require("./controllers/quote");
+const youthApiController = require("./controllers/api/youth");
 const app = express();
 app.set("view engine", "ejs");
 
@@ -87,6 +88,8 @@ app.get("/view_profile/edit/:id", youthController.EditProfile);
 app.post("/view_profile/edit/:id", youthController.Update);
 
 app.get("/all-profiles", authMiddleware, youthController.AllProfiles);
+
+app.get("/api/search-youth", youthApiController.list);
 
 app.listen(PORT, () => {
   console.log(

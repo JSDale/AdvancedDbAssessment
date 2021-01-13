@@ -23,6 +23,17 @@
         <%- include('common/header'); -%>
         <div class ="container">
             <h1>All Profiles</h1>
+            <form>
+                <div class="nav-wrapper">
+                    <div class="input-field">
+                    <input id="searchInput" type="text" placeholder="Search Common Interests">
+                    </div>
+                </div>
+                <div id="search-button" style="text-align: center;">
+                    <button onclick="handleClick()" type="button" class="waves-effect waves-light btn">Search Profiles</button>
+                </div>
+            </form>
+            <div id="youthItems"></div>
 
             <% youths.forEach(youth => { %>
 
@@ -44,5 +55,6 @@
             <% }); %>
 
         </div>
+        <script src="../../scripts/search-profile.js"></script>
     </body>
 </html> 
