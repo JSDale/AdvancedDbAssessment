@@ -61,6 +61,14 @@ exports.create = async (req, res) => {
             interestTwo = req.body.interestTwo;
         }
 
+        inputArray = new Array(req.body.email.toString().toLowerCase(), req.body.password.toString().toLowerCase(), req.body.parentsEmail.toString().toLowerCase(),
+        req.body.youth_FullName.toString().toLowerCase(), youth_Gender.toString().toLowerCase(), youth_MedicinalRequirements.toString().toLowerCase(),
+        youth_Allergies.toString().toLowerCase(), youth_DoB.toString().toLowerCase(), youth_OtherNotes.toString().toLowerCase(), req.body.interestOne.toString().toLowerCase(),
+        interestTwo.toString().toLowerCase()
+        );
+
+        await profanityFilter(inputArray);
+
         const youth = new Youth({
             youth_email: req.body.email,
             password: req.body.password,
@@ -85,9 +93,27 @@ exports.create = async (req, res) => {
             return;
         }
         console.log(e);
-        return res.status(400).send({ message: "couldn't save user" });
+        return res.status(400).send({ message: "couldn't save user, go back and check all the required fields (ones in red) are populated. " +
+        "Also, check you didn't use profanity." });
     }
 };
+
+//this is used to filter out profanity, I had to hard code offensive words, please don't take offence :)
+async function profanityFilter(inputArray){
+    let profanityArray = new Array ("fuck", "shit", "crap", "nigger", "fag", "twat", "cum", "cumming", "cock",
+        "fuck ", "shit ", "crap ", "nigger ", "fag ", "twat ", "cum ", "cumming ", "cock ",
+        " fuck", " shit", " crap", " nigger", " fag", " twat", " cum", " cumming", " cock",
+        " fuck ", " shit ", " crap ", " nigger ", " fag ", " twat ", " cum ", " cumming ", " cock "
+    );
+
+    profanityArray.forEach(word => {
+        inputArray.forEach(input => {
+            if(word == input){
+                throw new Error("Profanity entered");
+            }
+        });
+    });
+}
 
 async function save(youth)
 {
