@@ -20,10 +20,7 @@ exports.UpdateAttendance = async (req, res) => {
     console.log(date);
     tempYouth = await Youth.findById(id);
 
-    //var attendances = CreateAttendanceArray();
-
     var attendances = await tempYouth.attendance;
-    //console.log(tempYouth.attendance);
     var attendanceStr = await attendances.toString();
     var attendanceArr = await attendanceStr.split(",");
     var newArr = new Array;
@@ -32,25 +29,31 @@ exports.UpdateAttendance = async (req, res) => {
         newArr.push(new Array(attendanceArr[j], attendanceArr[j+1]));
         j = j+2;
         
+        //this is so the for each doesn't add null entries to the attendance array.
         if(attendanceArr[j] == null){
             k = 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
         }
     }
 
-    //console.log(newArr);
-
     let i = 0;
+    let updated = false;
     newArr.forEach(week => {
-        console.log(week);
         if(week.includes(date.toString()))
         {
-            week[1] = week[1].toString().replace("false", "true");
+            week[1] = attended;
             console.log(newArr[i]);
             console.log(i);
+            updated = true;
         }
-
         i++
     });
+
+    if(updated == false) {
+        res.status(404).send({
+            message: `could not update attendance, week not available.`,
+        });
+        return;
+    }
 
     try{
         console.log(id);
@@ -58,9 +61,9 @@ exports.UpdateAttendance = async (req, res) => {
         res.redirect('/?updated attendance');
     }
     catch(e){
+        console.log(e);
         res.status(404).send({
             message: `could not update attendance for: ${id}.`,
         });
-        console.log(e);
     }
 };
