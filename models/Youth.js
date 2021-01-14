@@ -21,16 +21,15 @@ const youthSchema = new Schema(
 
 youthSchema.pre('save', async function (next) {
     try{
-        try{
-            const hash = await bcrypt.hash(this.password, 10);
-            this.password = hash;
-            console.log(this.password);
-            next();
-        }
-        catch(e) {
-            throw Error('could not hash password');
-        }
-
+        const hash = await bcrypt.hash(this.password, 10);
+        this.password = hash;
+        console.log(this.password);
+        next();
+    }
+    catch(e) {
+        throw Error('could not hash password');
+    }
+    try{
         console.log("creating attendance array");
         Date.prototype.addDays = function(days) {
             var date = new Date(this.valueOf());

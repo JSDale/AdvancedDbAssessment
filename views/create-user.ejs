@@ -20,154 +20,154 @@
     <link href="css/album.css" rel="stylesheet" />
     </head>
     <body>
-    <%- include('common/header'); -%>
+      <%- include('common/header'); -%>
 
-    <div class="container">
-      <h1 class="text-center">Join</h1>
-      <div class="row justify-content-md-center">
-        <div class="col-">
-          <form method="POST" action="/join">
-            <div class="form-group">
-              <label for="name" style="color: red;">Email*</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                placeholder="Enter Email*"
-              />
-              <% if (errors['email']) { %>
-              <p style="color: red"><%= errors['email'].message %></p>
-              <% } %>
-            </div>
+      <div class="container">
+        <h1 class="text-center">Join</h1>
+        <div class="row justify-content-md-center">
+          <div class="col-">
+            <form method="POST" action="/join">
+              <div class="form-group">
+                <label for="name" style="color: red;">Email*</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Enter Email*"
+                />
+                <% if (errors['email']) { %>
+                <p style="color: red"><%= errors['email'].message %></p>
+                <% } %>
+              </div>
 
-            <div class="form-group">
-              <label for="password" style="color: red;">Password*</label>
-              <input
-                placeholder="Enter Password*"
-                type="password"
-                class="form-control"
-                name="password"
-              />
-              <% if (errors['password']) { %>
-              <p style="color: red"><%= errors['password'].message %></p>
-              <% } %>
-            </div>
+              <div class="form-group">
+                <label for="password" style="color: red;">Password*</label>
+                <input
+                  placeholder="Enter Password*"
+                  type="password"
+                  class="form-control"
+                  name="password"
+                />
+                <% if (errors['password']) { %>
+                <p style="color: red"><%= errors['password'].message %></p>
+                <% } %>
+              </div>
 
-            <div class="form-group">
-              <label for="parentsEmail" style="color: red;">Parent's Email*</label>
-              <input
-                placeholder="Enter parents email*"
-                type="email"
-                class="form-control"
-                name="parentsEmail"
-              />
-              <% if (errors['parentsEmail']) { %>
-              <p style="color: red"><%= errors['parentsEmail'].message %></p>
-              <% } %>
-            </div>
+              <div class="form-group">
+                <label for="parentsEmail" style="color: red;">Parent's Email*</label>
+                <input
+                  placeholder="Enter parents email*"
+                  type="email"
+                  class="form-control"
+                  name="parentsEmail"
+                />
+                <% if (errors['parentsEmail']) { %>
+                <p style="color: red"><%= errors['parentsEmail'].message %></p>
+                <% } %>
+              </div>
 
-            <div class="form-group">
-              <label for="youthFullName" style="color: red;">Full Name*</label>
-              <input
-                placeholder="Enter Full Name*"
-                type="text"
-                class="form-control"
-                name="youth_FullName"
-              />
-              <% if (errors['youthFullName']) { %>
-              <p style="color: red"><%= errors['youthFullName'].message %></p>
-              <% } %>
-            </div>
-            
-            <div class="form-group">
-              <label for="interest" style="color: red;">Interest 1*</label>
-              <input
-                placeholder="Enter an interest*"
-                type="text"
-                class="form-control"
-                name="interestOne"
-              />
-              <% if (errors['interest']) { %>
-              <p style="color: red"><%= errors['interest'].message %></p>
-              <% } %>
-            </div>
-            
-            <div class="form-group">
-              <label for="interest">Interest 2</label>
-              <input
-                placeholder="Enter an interest*"
-                type="text"
-                class="form-control"
-                name="interestTwo"
-              />
-            </div>
+              <div class="form-group">
+                <label for="youthFullName" style="color: red;">Full Name*</label>
+                <input
+                  placeholder="Enter Full Name*"
+                  type="text"
+                  class="form-control"
+                  name="youth_FullName"
+                />
+                <% if (errors['youthFullName']) { %>
+                <p style="color: red"><%= errors['youthFullName'].message %></p>
+                <% } %>
+              </div>
+              
+              <div class="form-group">
+                <label for="interest" style="color: red;">Interest 1*</label>
+                <input
+                  placeholder="Enter an interest*"
+                  type="text"
+                  class="form-control"
+                  name="interestOne"
+                />
+                <% if (errors['interest']) { %>
+                <p style="color: red"><%= errors['interest'].message %></p>
+                <% } %>
+              </div>
+              
+              <div class="form-group">
+                <label for="interest">Interest 2</label>
+                <input
+                  placeholder="Enter an interest*"
+                  type="text"
+                  class="form-control"
+                  name="interestTwo"
+                />
+              </div>
 
-            <div class="form-group">
-              <label for="youthGender">Gender</label>
-              <div class="input-fieldcol s12">
-                <select name="youth_Gender" >
-                  <option value="" disabled>Choose your option</option>
-                  <option value="Prefer not to say">Prefer not to say</option>
-                  <option value="Male">male</option>
-                  <option value="Female">female</option>
-                  <option value="Other">other</option>
-                </select>
-            </div>
-            </div>
+              <div class="form-group">
+                <label for="youthGender">Gender</label>
+                <div class="input-fieldcol s12">
+                  <select name="youth_Gender" >
+                    <option value="" disabled>Choose your option</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                    <option value="Male">male</option>
+                    <option value="Female">female</option>
+                    <option value="Other">other</option>
+                  </select>
+              </div>
+              </div>
 
-            <div class="form-group" style="margin-bottom: 1%;">
-              <label for="youth_DoB">Date of Birth</label>
-              <input style="margin-bottom: 1%;"
-                placeholder="Enter DoB (DD-MM-YYYY)"
-                type="date"
-                class="form-control"
-                name="youth_DoB"
-              />
-            </div>
+              <div class="form-group" style="margin-bottom: 1%;">
+                <label for="youth_DoB">Date of Birth</label>
+                <input style="margin-bottom: 1%;"
+                  placeholder="Enter DoB (DD-MM-YYYY)"
+                  type="date"
+                  class="form-control"
+                  name="youth_DoB"
+                />
+              </div>
 
-            <div class="form-group">
-              <label for="youth_Allergies">Allergies</label>
-              <input
-                placeholder="Enter Allergies"
-                type="text"
-                class="form-control"
-                name="youth_Allergies"
-              />
-            </div>
+              <div class="form-group">
+                <label for="youth_Allergies">Allergies</label>
+                <input
+                  placeholder="Enter Allergies"
+                  type="text"
+                  class="form-control"
+                  name="youth_Allergies"
+                />
+              </div>
 
-            <div class="form-group">
-              <label for="youth_MedicinalRequirements">Medicinal Requirements</label>
-              <input
-                placeholder="Enter Medical Notes"
-                type="text"
-                class="form-control"
-                name="youth_MedicinalRequirements"
-              />
-            </div>
+              <div class="form-group">
+                <label for="youth_MedicinalRequirements">Medicinal Requirements</label>
+                <input
+                  placeholder="Enter Medical Notes"
+                  type="text"
+                  class="form-control"
+                  name="youth_MedicinalRequirements"
+                />
+              </div>
 
-            <div class="form-group">
-              <label for="youth_OtherNotes">OtherNotes</label>
-              <input
-                placeholder="Enter any other information about child"
-                type="text"
-                class="form-control"
-                name="youth_OtherNotes"
-              />
-            </div>
+              <div class="form-group">
+                <label for="youth_OtherNotes">OtherNotes</label>
+                <input
+                  placeholder="Enter any other information about child"
+                  type="text"
+                  class="form-control"
+                  name="youth_OtherNotes"
+                />
+              </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="../materialize/js/materialize.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          var elems = document.querySelectorAll('select');
-          var instances = M.FormSelect.init(elems, {});
-        });
-    </script>
-  </body>
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="../materialize/js/materialize.js"></script>
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, {});
+          });
+      </script>
+    </body>
 </html>

@@ -54,16 +54,6 @@ async function main() {
             load.stop();
             console.info("Quote collection set up");
         }
-
-        // if(!userResults)
-        // {
-        //     db.createCollection("users");
-        //     const load = loading("importing User Date Base").start();
-        //     const data = await fs.readFile(path.join(__dirname, "user.json"), "utf-8");
-        //     await db.collection("users").insertMany(JSON.parse(data));
-        //     load.stop();
-        //     console.info("User collection set up");
-        // }
         
         process.exit();
     }
@@ -84,7 +74,7 @@ function CreateAttendanceArray(){
     var attendanceArray = []; 
 
     var i = 0;
-    while(i < 100) {
+    while(i < 3500) {
         date = date.addDays(7);
         var subWeekArray = [date.toString(), "false"];
         attendanceArray.push(subWeekArray);

@@ -33,7 +33,6 @@ exports.login = async (req, res) => {
 
 exports.create = async (req, res) => {
     try{
-        console.log("hit");
         //default values of non-essential inputs
         var youth_Gender = "Not Known";
         var youth_MedicinalRequirements = "N/A";
@@ -152,6 +151,7 @@ exports.EditProfile = async (req, res) => {
 exports.Update = async (req, res) => {
     const id = req.params.id;
     try{
+        console.log(id);
         const user = await Youth.updateOne({_id: id}, req.body);
         res.redirect('/view-profile?profile updated');
     } catch(ex){

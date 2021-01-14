@@ -42,7 +42,7 @@ mongoose.connection.on("error", (err) => {
  */
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
 
 app.use(expressSession({ secret: 'foo barr', cookie: { expires: new Date(253402300000000) } }));
 
@@ -77,7 +77,11 @@ app.get("/test", async (req, res) => {
   res.render('test');
 })
 
+app.get("/join", (req, res) => {
+  res.render('create-user', { errors: {} })
+});
 app.post("/join", youthController.create);
+
 app.get("/login", (req, res) => {
   res.render('login-user', { errors: {} })
 });
@@ -94,13 +98,14 @@ app.get("/api/search-youth", youthApiController.list);
 
 app.get("/schedule", authMiddleware, attendanceController.AttendanceList);
 
+app.get("/attend", (req, res) => {
+  res.render("add-attendance");
+});
+app.post("/attend/:id", attendanceController.UpdateAttendance);
+
 app.listen(PORT, () => {
   console.log(
     `Example app listening at http://localhost:${PORT}`,
     chalk.green("✓")
   );
-});
-
-app.get("/join", (req, res) => {
-  res.render('create-user', { errors: {} })
 });
