@@ -104,8 +104,6 @@ The MVC method helped a lot during development as it loosely coupled the code, w
 
 The first functionality I implemented was creating a user, which was really simple to implement as I had reference work from previous lectures that I could alter and implement. The same goes for the login page.
 
-
-
 ### What Could be Improved
 
 As this is a proof of concept application, many improvements can be made. The first improvement could be moving the functionality of adding attendance away from the individual user as you can't always rely on kids to fill it in. The only way around ensuring they add their attendance is to get them to do it during the session. An extension of that is to create admin users that can access certain areas that normal users can't. At the moment there some webpages can only be accessed by logging in, but anyone who knows the URL can create a user and find out information on the children. This is a security risk so some kind of user authentication (where an admin accepts a user) should be implemented before release.
@@ -135,3 +133,7 @@ I implemented a basic profanity filter when creating a user account, which does 
 During development I would have liked to debug the backend JS with breakpoints as it would have helped slowing down the execution and knowing if variables were being populated with data, however I got around this by writing the variables to the console and when exceptions were thrown their messages were descriptive enough for me to lookup what I need to change to get it working.
 
 ### Conclusion
+
+In conclusion the web application fulfils the requirements laid out in this document as it allows users to be created and a register to be taken. This application is, however, still a proof of concept as there are improvements I would like to make and functionality I would like to add. 
+
+I had difficulties throughout the development process, especially when working with the attendance array, but I managed to overcome them and create an application that does as intended. I learnt a lot from this project as I have never created a full stack JavaScript application before and wasn't sure if I would like JavaScript as a language. I tend to prefer Object-Oriented Development with languages that implement classes, like C# and Java. However, I have come out this project with a different view on JavaScript and NoSQL development. I can see that both have a place in the development world.
