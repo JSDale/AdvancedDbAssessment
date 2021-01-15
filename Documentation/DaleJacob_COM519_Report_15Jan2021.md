@@ -104,18 +104,26 @@ The application requires users to log in to utilise its functionality therefore 
 
 As this is a proof of concept application, many improvements can be made. The first improvement could be moving the functionality of adding attendance away from the individual user as you can't always rely on kids to fill it in. The only way around ensuring they add their attendance is to get them to do it during the session. An extension of that is to create admin users that can access certain areas that normal users can't. At the moment there some webpages can only be accessed by logging in, but anyone who knows the URL can create a user and find out information on the children. This is a security risk so some kind of user authentication (where an admin accepts a user) should be implemented before release.
 
+Currently there is no pagination in the attendance tracker or view all profile pages, this should be added as it would make the web pages more user friendly, especially for mobile. 
+
+There is a search function implemented in the view all profiles web page which searches all the fields of the users. This could be improved by adding a filter option so, the user can select the specific field to search. For example if someone entered "can't swim" in the other notes section and someone entered swimming is their interest it could return both those users. This wouldn't be the case at the moment as the search isn't advanced enough to match words that aren't the exact search. The search parameters also need to be an exact match at the moment, including case sensitivity, which is something I would like to improve.
+
+I would like to implement a search function within the view attendance page as it would make looking up who attended which weeks a lot easier.
+
 Within the ejs pages, specifically attendance-tracker.ejs, there is embedded JavaScript code, which doesn't follow having the code loosely coupled for improved scalability and maintainability. However, I am unsure if this can be abstracted into a .js file as it is part of rendering the HTML for seeing all the kids attendance. During troubleshooting some issues with reading and writing to the attendance array in the attendance controller, I read that instantiating an array with 
 
 ```javascript
-var arr = new Array(1,2,3)
+var arr = new Array(1,2,3);
 ```
 
  is now considered bad practice and it should be instantiated with
 
 ```javascript
-var arr = [1,2,3]
+var arr = [1,2,3];
 ```
 
 I plan to read into this more before release as I am not sure what the differences are. By using one method over another could cause unexpected bugs.
+
+I implemented a basic profanity filter when creating a user account, which does catch some words. The filter can easily miss words if they have a number or a character implemented into it. The check only ensures the word by itself isn't input, if they were to input multiple words the filter wouldn't be able to catch that. So this would need to be improved in a future sprint.
 
 ### Conclusion
