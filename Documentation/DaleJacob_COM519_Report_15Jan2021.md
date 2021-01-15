@@ -102,6 +102,20 @@ The application requires users to log in to utilise its functionality therefore 
 
 ### What Could be Improved
 
+As this is a proof of concept application, many improvements can be made. The first improvement could be moving the functionality of adding attendance away from the individual user as you can't always rely on kids to fill it in. The only way around ensuring they add their attendance is to get them to do it during the session. An extension of that is to create admin users that can access certain areas that normal users can't. At the moment there some webpages can only be accessed by logging in, but anyone who knows the URL can create a user and find out information on the children. This is a security risk so some kind of user authentication (where an admin accepts a user) should be implemented before release.
 
+Within the ejs pages, specifically attendance-tracker.ejs, there is embedded JavaScript code, which doesn't follow having the code loosely coupled for improved scalability and maintainability. However, I am unsure if this can be abstracted into a .js file as it is part of rendering the HTML for seeing all the kids attendance. During troubleshooting some issues with reading and writing to the attendance array in the attendance controller, I read that instantiating an array with 
+
+```javascript
+var arr = new Array(1,2,3)
+```
+
+ is now considered bad practice and it should be instantiated with
+
+```javascript
+var arr = [1,2,3]
+```
+
+I plan to read into this more before release as I am not sure what the differences are. By using one method over another could cause unexpected bugs.
 
 ### Conclusion
