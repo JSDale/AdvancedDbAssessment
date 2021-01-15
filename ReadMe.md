@@ -4,6 +4,8 @@
 
 *this has only been tested on Windows 10*
 
+*both of the users in the JSON file have passwords of: test1234*
+
 #### You will need:
 
 * Visual Studio Code (vs code)

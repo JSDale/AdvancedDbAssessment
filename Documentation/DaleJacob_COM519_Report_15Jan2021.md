@@ -6,6 +6,8 @@
 
 # Hand in Date: 15/Jan/2021
 
+word count: 2238
+
 
 
 Hosted Web app can be found at: https://nameless-savannah-04348.herokuapp.com/
