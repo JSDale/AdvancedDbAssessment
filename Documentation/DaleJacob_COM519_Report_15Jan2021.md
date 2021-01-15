@@ -98,6 +98,12 @@ The application requires users to log in to utilise its functionality therefore 
 
 ### What Went Well
 
+In order to speed up production of the application and help me focus more on the backend, I implemented a responsive design library called Materialize. I looked up using twitter bootstrap, however there seemed to be a steep learning curve with bootstrap and materialize have easy to use web interface documents. This reduced the development time dramatically as it also implements mobile views. I did have to add a hamburger menu for mobile users, but the documentation walked me through it. 
+
+The MVC method helped a lot during development as it loosely coupled the code, which meant when I edited a function and broke it, the other functionality was unaltered.
+
+The first functionality I implemented was creating a user, which was really simple to implement as I had reference work from previous lectures that I could alter and implement. The same goes for the login page.
+
 
 
 ### What Could be Improved
@@ -125,5 +131,7 @@ var arr = [1,2,3];
 I plan to read into this more before release as I am not sure what the differences are. By using one method over another could cause unexpected bugs.
 
 I implemented a basic profanity filter when creating a user account, which does catch some words. The filter can easily miss words if they have a number or a character implemented into it. The check only ensures the word by itself isn't input, if they were to input multiple words the filter wouldn't be able to catch that. So this would need to be improved in a future sprint.
+
+During development I would have liked to debug the backend JS with breakpoints as it would have helped slowing down the execution and knowing if variables were being populated with data, however I got around this by writing the variables to the console and when exceptions were thrown their messages were descriptive enough for me to lookup what I need to change to get it working.
 
 ### Conclusion
